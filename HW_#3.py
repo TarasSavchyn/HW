@@ -110,7 +110,7 @@ dict_comprehension = {x: x**3 for x in range(10) if x**3 % 4 == 0}'''
 dict_comprehension = {}
 for x in range(10):
     if x ** 3 % 4 == 0:
-        d[x] = x ** 3
+        dict_comprehension[x] = x ** 3
 print(dict_comprehension)
 
 # 17*. Convert (6) to regular for with if-else.
@@ -124,11 +124,6 @@ for x in range(10):
     else:
         dict_comprehension[x] = x
 print(dict_comprehension)
-
-# Lambda:
-#
-
-#
 
 # 18. Convert (7) to lambda function
 '''(7)
@@ -168,7 +163,7 @@ print(m)
 list_A = [2, 3, 4]
 list_B = [5, 6, 7]
 
-a = [i[0]**i[1] for i in zip(list_A, list_B)]
+a = [x ** y for x, y in zip(list_A, list_B)]
 print(a)
 
 # 24. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
