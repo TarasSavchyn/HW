@@ -134,6 +134,7 @@ def foo(x, y):
         return y'''
 
 foo = lambda x, y: x if x < y else y
+print(foo)
 
 # 19*. Convert (8) to regular function
 '''(8)
