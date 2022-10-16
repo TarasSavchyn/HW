@@ -167,23 +167,8 @@ print(m)
 # 23*. Raise each list number to the corresponding number on another list:
 list_A = [2, 3, 4]
 list_B = [5, 6, 7]
-'''I don't understand what it means to "raise-піднести", so I offer different options'''
-list_A = [2, 3, 4]
-list_B = [5, 6, 7]
-'''I don't understand what it means to "raise-піднести", so I offer different options'''
-# a)
-a = [x + 3 for x in list_A]
-print(a)
 
-a = [*map(lambda x: x + 3, list_A)]
-print(a)
-
-# b)
-a = list_A + list_B
-print(a)
-
-# c)
-a = [sum(i) for i in zip(list_A, list_B)]
+a = [i[0]**i[1] for i in zip(list_A, list_B)]
 print(a)
 
 # 24. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
