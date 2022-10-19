@@ -3,7 +3,7 @@ mileage_info"""
 
 
 class Vehicle:
-    def __init__(self, max_speed=100, mileage=10000):
+    def __init__(self, max_speed, mileage):
         self.max_speed = max_speed
         self.mileage = mileage
 
@@ -22,12 +22,12 @@ class Vehicle:
 
 
 class Bus(Vehicle):
-    def __init__(self, max_speed, mileage, seating_capacity):
+    def __init__(self, max_speed, mileage, capacity):
         super(Bus, self).__init__(max_speed, mileage)
-        self.seating_capacity = seating_capacity
+        self.capacity = capacity
 
     def seating_capacity(self):
-        print(f'seating_capacity is {self.seating_capacity} persons')
+        print(f'seating_capacity is {self.capacity} persons')
 
 
 '''3. Визначте, від якого класу успадковується клас Bus (перевірте issubclass)'''
@@ -59,14 +59,14 @@ class School:
 
 
 class SchoolBus(School, Bus):
-    def __init__(self, max_speed, mileage, seating_capacity, get_school_id, number_of_students, bus_school_color):
+    def __init__(self, max_speed, mileage, capacity, get_school_id, number_of_students, bus_school_color):
         super().__init__(get_school_id, number_of_students)
-        Bus.__init__(self, max_speed, mileage, seating_capacity)
+        Bus.__init__(self, max_speed, mileage, capacity)
         self.bus_school_color = bus_school_color
 
     def return_information(self):
         print(
-            f'max_speed {self.max_speed}, mileage {self.mileage}, capacity {self.seating_capacity}, '
+            f'max_speed {self.max_speed}, mileage {self.mileage}, capacity {self.capacity}, '
             f'get_school_id {self.get_school_id}, number_of_students {self.number_of_students},'
             f' bus_school_color {self.bus_school_color}'
         )
@@ -75,7 +75,7 @@ class SchoolBus(School, Bus):
 school_bus_1 = SchoolBus('100 m/h', '20000 m', 100, '1.1.1.1', 10, 'Green')
 school_bus_1.return_information()
 
-'''# 7. Поліморфізм: Створіть два класи: Bear, Wolf. Обидва вони повинні мати метод eat. Створіть два екземпляри:
+'''7. Поліморфізм: Створіть два класи: Bear, Wolf. Обидва вони повинні мати метод eat. Створіть два екземпляри:
  від Ведмідь і від Вовк, створіть із нього кортеж і використовуючи спільну змінну, викличте метод eat.'''
 
 
