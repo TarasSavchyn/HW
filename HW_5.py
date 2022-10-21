@@ -17,17 +17,15 @@ class Battery:
         self.percent_of_battery = percent_of_battery
 
 
-l_1 = Laptop()
-print(l_1.batteries)
-
-
 #2.
 class Guitar:
     """
     Make the class with aggregation
     """
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, song):
+        self.song = song
+    def play_musik(self):
+        print(self.song)
 
 
 class GuitarString:
@@ -36,10 +34,15 @@ class GuitarString:
     """
     def __init__(self, mysic):
         self.mysic = mysic
+    def music_return(self):
+        return self.mysic
+
 
 my_music = GuitarString('la-la_la')
 
-my_guitar = Guitar(my_music)
+my_guitar = Guitar(my_music.music_return())
+my_guitar.play_musik()
+
 
 
 #3
@@ -104,6 +107,21 @@ class Concert:
         concert.visitors_count = 1000
         print(concert.visitors_count)  # 50
     """
+    def __init__(self, max_visitor_num=50):
+        self.max_visitor_num = max_visitor_num
+
+    def __setattr__(self, key, value):
+        if value < self.max_visitor_num:
+            return object.__setattr__(self, key, value)
+        return object.__setattr__(self, key, self.max_visitor_num)
+
+
+
+Concert.max_visitor_num = 50
+concert = Concert()
+concert.visitors_count = 1000
+print(concert.visitors_count)
+
 
 #6.
 import dataclasses
@@ -143,7 +161,7 @@ class AddressBook:
     Expected result by printing instance of AddressBook: AddressBook(key='', name='', phone_number='', address='',
     email='', birthday= '', age='')
     """
-    def __init__(self, key=0, name='', phone_number='', address='', email='', birthday= '', age=0):
+    def __init__(self, key = '', name='', phone_number='', address='', email='', birthday= '', age = 0):
         self.key = key
         self.name = name
         self.phone_number = phone_number
