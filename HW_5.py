@@ -110,7 +110,7 @@ class Concert:
     max_visitor_num = 50
 
     def __setattr__(self, key, value):
-        if value < self.max_visitor_num:
+        if key == 'visitors_count' and value < self.max_visitor_num:
             return object.__setattr__(self, key, value)
         return object.__setattr__(self, key, self.max_visitor_num)
 
@@ -118,7 +118,7 @@ class Concert:
 
 Concert.max_visitor_num = 50
 concert = Concert()
-concert.visitors_count = 1000
+concert.visitors_count = 20
 print(concert.visitors_count)
 
 
