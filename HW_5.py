@@ -107,8 +107,7 @@ class Concert:
         concert.visitors_count = 1000
         print(concert.visitors_count)  # 50
     """
-    def __init__(self, max_visitor_num=50):
-        self.max_visitor_num = max_visitor_num
+    max_visitor_num = 50
 
     def __setattr__(self, key, value):
         if value < self.max_visitor_num:
@@ -121,6 +120,8 @@ Concert.max_visitor_num = 50
 concert = Concert()
 concert.visitors_count = 1000
 print(concert.visitors_count)
+
+
 
 
 #6.
