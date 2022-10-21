@@ -8,6 +8,7 @@ class Laptop:
         b_2 = Battery('20 %')
         self.batteries = [b_1.percent_of_battery, b_2.percent_of_battery]
 
+
 class Battery:
     """
     Make the class with composition.
@@ -59,6 +60,7 @@ print(c.add_nums())
 
 
 #4*.
+
 class Pasta:
     """
     Створіть клас, який приймає 1 атрибут при ініціалізації - ingredients і визначає інгридієнти атрибута екземпляра.
@@ -71,6 +73,24 @@ class Pasta:
         pasta_2 = Pasta.bolognaise()
         pasta_2.ingredients will equal to ['bacon', 'parmesan', 'eggs']
     """
+
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    @classmethod
+    def carbonara(cls):
+        return cls(['forcemeat', 'tomatoes'])
+
+    @classmethod
+    def bolognaise(cls):
+        return cls(['bacon', 'parmesan', 'eggs'])
+
+
+pasta_1 = Pasta(["tomato", "cucumber"])
+print(pasta_1.ingredients)
+
+pasta_2 = Pasta.bolognaise()
+print(pasta_2.ingredients)
 
 #5*.
 class Concert:
