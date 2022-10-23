@@ -134,7 +134,8 @@ def foo(x, y):
         return y'''
 
 foo = lambda x, y: x if x < y else y
-print(foo)
+
+print(foo(3,5))
 
 # 19*. Convert (8) to regular function
 '''(8)
@@ -145,6 +146,8 @@ def foo(x, y, z):
         return z
     else:
         return y
+
+print(foo(3, 8, 4))
 
 
 lst_to_sort = [5, 18, 1, 24, 33, 15, 13, 55]
@@ -166,6 +169,10 @@ list_B = [5, 6, 7]
 
 a = [x ** y for x, y in zip(list_A, list_B)]
 print(a)
+
+b = [*map(lambda i, k: i**k, list_A, list_B)]
+print(b)
+
 
 # 24. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
 
