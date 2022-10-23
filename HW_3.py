@@ -42,7 +42,7 @@ print("Anna has {a} apples and {p} peaches.".format(p=peaches, a=apples))
 
 # 8*. With indicators of field size (5 chars for the first and 3 for the second)
 
-print("Anna has {0:>5d} apples and {0:>3d} peaches.".format(apples, peaches))
+print("Anna has {0:>5d} apples and {1:>3d} peaches.".format(apples, peaches))
 
 # 9. With f-strings and variables
 print(f"Anna has {apples} apples and {peaches} peaches.")
