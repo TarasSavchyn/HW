@@ -1,14 +1,17 @@
-from models.models import Plant, Employee
+from models.models import Plant, Employee, Salon
 
 while True:
     print("1. Add new plant \n"
           "2. Get all plants\n"
           "3. Get plant by id\n"
           "4. Delete plant by id\n"
-          "5. Add new employee\n"
+          "5. Add new employee with salon or without\n"
           "6. Get all employee\n"
           "7. Get employee by id\n"
           "8. Delete employee by id\n"
+          "9. Add salon by name\n"
+          "10. Delete salon by id\n"
+
           )
     flag = int(input("Choose: "))
     if flag == 1:
@@ -35,8 +38,16 @@ while True:
         name = input("Type name of employee: ")
         email = input("Type email of employee: ")
         plant_id = int(input("Type id of plant: "))
-        employee = Employee(name, email, plant_id)
-        employee.save()
+        salon = input("Salon: ")
+        if salon:
+            employee = Employee(name, email, plant_id, salon)
+            employee.save()
+            s = Salon(salon)
+            s.save()
+        else:
+            employee = Employee(name, email, plant_id)
+            employee.save()
+
     elif flag == 6:
         employees = Employee.get_all()
         for employee in employees:
@@ -52,6 +63,13 @@ while True:
     elif flag == 8:
         id = int(input('Type id of employee: '))
         Employee.delete(id)
+    elif flag == 9:
+        name = input('Salon name: ')
+        salon = Salon(name)
+        salon.save()
+    elif flag == 10:
+        id = int(input('Number id of salon: '))
+        Salon.delete(id)
 
 
 

@@ -5,6 +5,7 @@ from abc import ABC
 class Model(ABC):
     file = "default.json"
 
+
     @staticmethod
     def get_data(path):
         file = open(path, "r")
@@ -48,3 +49,5 @@ class Model(ABC):
                 del instances[i]
                 break
         cls.save_data_to_file(instances, "database/" + cls.file)
+
+
