@@ -16,7 +16,8 @@ class Employee(Model):
         self.name = name
         self.email = email
         self.plant_id = plant_id
-        self.salon = salon
+        if salon:
+            self.salon = salon
 
 
 class Salon(Model):
