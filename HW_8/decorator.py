@@ -1,16 +1,17 @@
 from datetime import datetime
 
 
-def timer(function):
-    def wrapper(*args, **kwargs):
-        start = datetime.now()
-        result = function(*args, **kwargs)
-        end = datetime.now()
-        print(
-            "function execution time: {time.seconds}s, {time.microseconds}ms".format(
-                time=end - start
-            )
-        )
-        return result
+def timer(name: str = 'Function'):
 
-    return wrapper
+    def parametr(function):
+        def wrapper(*args, **kwargs):
+            start = datetime.now()
+            result = function(*args, **kwargs)
+            end = datetime.now()
+            time = end - start
+            print(f"Function [{name}] execution time: {time.seconds}s, {time.microseconds}ms")
+            return result
+        return wrapper
+
+
+    return parametr
