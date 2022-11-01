@@ -1,13 +1,13 @@
 # 1. Define the id of next variables:
 int_a = 55
 print(id(int_a))
-str_b = 'cursor'
+str_b = "cursor"
 print(id(str_b))
 set_c = {1, 2, 3}
 print(id(set_c))
 lst_d = [1, 2, 3]
 print(id(lst_d))
-dict_e = {'a': 1, 'b': 2, 'c': 3}
+dict_e = {"a": 1, "b": 2, "c": 3}
 print(id(dict_e))
 
 # 2. Append 4 and 5 to the lst_d and define the id one more time.
@@ -55,21 +55,21 @@ d = {apples: 5, peaches: 10}
 print(f"Anna has {d[apples]} apples and {d[peaches]} peaches.")
 
 # 12. Convert (1) to list comprehension
-'''(1)
+"""(1)
 lst = []
 for num in range(10):
     if num % 2 == 1:
         lst.append(num ** 2)
     else:
         lst.append(num ** 4)
-print(lst)'''
+print(lst)"""
 
-lst = [num ** 2 if num % 2 == 1 else num ** 4 for num in range(10)]
+lst = [num**2 if num % 2 == 1 else num**4 for num in range(10)]
 print(lst)
 
 # 13. Convert (2) to regular for with if-else
-'''(2)
-list_comprehension = [num // 2 if num % 2 == 0 else num * 10 for num in range(10)]'''
+"""(2)
+list_comprehension = [num // 2 if num % 2 == 0 else num * 10 for num in range(10)]"""
 
 list_comprehension = []
 for num in range(10):
@@ -81,71 +81,73 @@ for num in range(10):
 print(list_comprehension)
 
 # 14. Convert (3) to dict comprehension.
-'''(3)
+"""(3)
 d = {}
 for num in range(1, 11):
     if num % 2 == 1:
         d[num] = num ** 2
-print(d) '''
+print(d) """
 
-d = {num: num ** 2 for num in range(1, 11) if num % 2 == 1}
+d = {num: num**2 for num in range(1, 11) if num % 2 == 1}
 print(d)
 
 # 15*. Convert (4) to dict comprehension.
-'''(4)
+"""(4)
 d = {}
 for num in range(1, 11):
     if num % 2 == 1:
         d[num] = num ** 2
     else:
         d[num] = num // 0.5
-print(d)'''
+print(d)"""
 
-d = {num: num ** 2 if num % 2 == 1 else num // 0.5 for num in range(1, 11)}
+d = {num: num**2 if num % 2 == 1 else num // 0.5 for num in range(1, 11)}
 
 # 16. Convert (5) to regular for with if.
-'''(5)
-dict_comprehension = {x: x**3 for x in range(10) if x**3 % 4 == 0}'''
+"""(5)
+dict_comprehension = {x: x**3 for x in range(10) if x**3 % 4 == 0}"""
 
 dict_comprehension = {}
 for x in range(10):
-    if x ** 3 % 4 == 0:
-        dict_comprehension[x] = x ** 3
+    if x**3 % 4 == 0:
+        dict_comprehension[x] = x**3
 print(dict_comprehension)
 
 # 17*. Convert (6) to regular for with if-else.
-'''(6)
-dict_comprehension = {x: x**3 if x**3 % 4 == 0 else x for x in range(10)}'''
+"""(6)
+dict_comprehension = {x: x**3 if x**3 % 4 == 0 else x for x in range(10)}"""
 
 dict_comprehension = {}
 for x in range(10):
-    if x ** 3 % 4 == 0:
-        dict_comprehension[x] = x ** 3
+    if x**3 % 4 == 0:
+        dict_comprehension[x] = x**3
     else:
         dict_comprehension[x] = x
 print(dict_comprehension)
 
 # 18. Convert (7) to lambda function
-'''(7)
+"""(7)
 def foo(x, y):
     if x < y:
         return x
     else:
-        return y'''
+        return y"""
 
 foo = lambda x, y: x if x < y else y
 
-print(foo(3,5))
+print(foo(3, 5))
 
 # 19*. Convert (8) to regular function
-'''(8)
-foo = lambda x, y, z: z if y < x and x > z else y'''
+"""(8)
+foo = lambda x, y, z: z if y < x and x > z else y"""
+
 
 def foo(x, y, z):
     if y < x and x > z:
         return z
     else:
         return y
+
 
 print(foo(3, 8, 4))
 
@@ -159,7 +161,7 @@ print(sorted(lst_to_sort))
 print(sorted(lst_to_sort, reverse=True))
 # 22. Use map and lambda to update the lst_to_sort by multiply each element by 2
 
-m = list(map(lambda x: x*2, lst_to_sort))
+m = list(map(lambda x: x * 2, lst_to_sort))
 print(m)
 
 
@@ -167,7 +169,7 @@ print(m)
 list_A = [2, 3, 4]
 list_B = [5, 6, 7]
 
-a = [x ** y for x, y in zip(list_A, list_B)]
+a = [x**y for x, y in zip(list_A, list_B)]
 print(a)
 
 b = [*map(lambda i, k: i**k, list_A, list_B)]
@@ -181,19 +183,19 @@ print(f)
 
 # 25. Considering the range of values: b = range(-10, 10), use the function filter to return only negative numbers.
 
+
 def negative(x):
     if x < 0:
         return x
+
+
 f_1 = tuple(filter(negative, range(-10, 10)))
 print(f_1)
 
 
 # 26*. Using the filter function, find the values that are common to the two lists:
-list_1 = [1,2,3,5,7,9]
-list_2 = [2,3,5,6,7,8]
+list_1 = [1, 2, 3, 5, 7, 9]
+list_2 = [2, 3, 5, 6, 7, 8]
 
 a = list(filter(lambda a: a in list_2, list_1))
 print(a)
-
-
-

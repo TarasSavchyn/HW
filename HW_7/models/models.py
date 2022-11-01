@@ -22,5 +22,6 @@ class Employee(Model):
 
 class Salon(Model):
     file = "salon.json"
+
     def __init__(self, name: str):
         self.name = name
