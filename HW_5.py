@@ -1,11 +1,12 @@
-#1.
+# 1.
 class Laptop:
     """
     Make the class with composition.
     """
+
     def __init__(self):
-        b_1 = Battery('10 %')
-        b_2 = Battery('20 %')
+        b_1 = Battery("10 %")
+        b_2 = Battery("20 %")
         self.batteries = [b_1.percent_of_battery, b_2.percent_of_battery]
 
 
@@ -13,17 +14,20 @@ class Battery:
     """
     Make the class with composition.
     """
+
     def __init__(self, percent_of_battery):
         self.percent_of_battery = percent_of_battery
 
 
-#2.
+# 2.
 class Guitar:
     """
     Make the class with aggregation
     """
+
     def __init__(self, song):
         self.song = song
+
     def play_musik(self):
         print(self.song)
 
@@ -32,37 +36,42 @@ class GuitarString:
     """
     Make the class with aggregation
     """
+
     def __init__(self, mysic):
         self.mysic = mysic
+
     def music_return(self):
         return self.mysic
 
 
-my_music = GuitarString('la-la_la')
+my_music = GuitarString("la-la_la")
 
 my_guitar = Guitar(my_music.music_return())
 my_guitar.play_musik()
 
 
-
-#3
+# 3
 class Calc:
     """
     Створіть клас з одним методом "add_nums" та 3 атрибутами, який повертає суму цих атрибутів.
     """
+
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
         self.c = c
+
     def add_nums(self):
         return self.a + self.b + self.c
 
-c = Calc(1,2,3)
+
+c = Calc(1, 2, 3)
 
 print(c.add_nums())
 
 
-#4*.
+# 4*.
+
 
 class Pasta:
     """
@@ -82,11 +91,11 @@ class Pasta:
 
     @classmethod
     def carbonara(cls):
-        return cls(['forcemeat', 'tomatoes'])
+        return cls(["forcemeat", "tomatoes"])
 
     @classmethod
     def bolognaise(cls):
-        return cls(['bacon', 'parmesan', 'eggs'])
+        return cls(["bacon", "parmesan", "eggs"])
 
 
 pasta_1 = Pasta(["tomato", "cucumber"])
@@ -95,7 +104,7 @@ print(pasta_1.ingredients)
 pasta_2 = Pasta.bolognaise()
 print(pasta_2.ingredients)
 
-#5*.
+# 5*.
 class Concert:
     """
     Make class, which has max_visitors_num attribute and its instances will have visitors_count attribute.
@@ -107,13 +116,13 @@ class Concert:
         concert.visitors_count = 1000
         print(concert.visitors_count)  # 50
     """
+
     max_visitor_num = 50
 
     def __setattr__(self, key, value):
-        if key == 'visitors_count' and value < self.max_visitor_num:
+        if key == "visitors_count" and value < self.max_visitor_num:
             return object.__setattr__(self, key, value)
         return object.__setattr__(self, key, self.max_visitor_num)
-
 
 
 Concert.max_visitor_num = 50
@@ -122,10 +131,9 @@ concert.visitors_count = 1000
 print(concert.visitors_count)
 
 
-
-
-#6.
+# 6.
 import dataclasses
+
 
 @dataclasses.dataclass
 class AddressBookDataClass:
@@ -133,6 +141,7 @@ class AddressBookDataClass:
     Create dataclass with 7 fields - key (int), name (str), phone_number (str), address (str), email (str), birthday
     (str), age (int)
     """
+
     key: int
     name: str
     phone_number: str
@@ -140,21 +149,29 @@ class AddressBookDataClass:
     email: str
     birthday: str
     age: int
-fedir = AddressBookDataClass(1234, 'Fedir', '3372832', 'Fedir street, 1', 'fedir@ukr.net', '01.01.1900', 122)
+
+
+fedir = AddressBookDataClass(
+    1234, "Fedir", "3372832", "Fedir street, 1", "fedir@ukr.net", "01.01.1900", 122
+)
 print(fedir.email)
 
 
-#7. Create the same class (6) but using NamedTuple
+# 7. Create the same class (6) but using NamedTuple
 
 
 from collections import namedtuple
 
-Names = namedtuple('Names', ['key', 'name', 'phone_number', 'address', 'email', 'birthday' , 'age'])
-Fedir = Names(1234, 'Fedir', '3372832', 'Fedir street, 1', 'fedir@ukr.net', '01.01.1900', 122)
+Names = namedtuple(
+    "Names", ["key", "name", "phone_number", "address", "email", "birthday", "age"]
+)
+Fedir = Names(
+    1234, "Fedir", "3372832", "Fedir street, 1", "fedir@ukr.net", "01.01.1900", 122
+)
 print(Fedir.key)
 
 
-#8.
+# 8.
 class AddressBook:
     """
     Create regular class taking 7 params on init - key, name, phone_number, address, email, birthday, age
@@ -162,7 +179,10 @@ class AddressBook:
     Expected result by printing instance of AddressBook: AddressBook(key='', name='', phone_number='', address='',
     email='', birthday= '', age='')
     """
-    def __init__(self, key = '', name='', phone_number='', address='', email='', birthday= '', age = 0):
+
+    def __init__(
+        self, key="", name="", phone_number="", address="", email="", birthday="", age=0
+    ):
         self.key = key
         self.name = name
         self.phone_number = phone_number
@@ -170,35 +190,42 @@ class AddressBook:
         self.email = email
         self.birthday = birthday
         self.age = age
+
     def print_info_adress_book(self):
-        print(f"key='{self.key}', name='{self.name}', phone_number='{self.phone_number}', address='{self.address}',"
-              f" email='{self.email}', birthday= '{self.birthday}', age='{self.age}'")
+        print(
+            f"key='{self.key}', name='{self.name}', phone_number='{self.phone_number}', address='{self.address}',"
+            f" email='{self.email}', birthday= '{self.birthday}', age='{self.age}'"
+        )
 
 
-fedir_hynnynets = AddressBook(1234, 'Fedir', '3372832', 'Fedir street, 1', 'fedir@ukr.net', '01.01.1900', 122)
+fedir_hynnynets = AddressBook(
+    1234, "Fedir", "3372832", "Fedir street, 1", "fedir@ukr.net", "01.01.1900", 122
+)
 fedir_hynnynets.print_info_adress_book()
 
 
-
-#9.
+# 9.
 class Person:
     """
     Change the value of the age property of the person object
     """
+
     name = "John"
     age = 36
     country = "USA"
+
 
 Person.age = 100
 print(Person.age)
 
 
-#10.
+# 10.
 class Student:
     """
     Add an 'email' attribute of the object student and set its value
     Assign the new attribute to 'student_email' variable and print it by using getattr
     """
+
     id = 0
     name = ""
 
@@ -207,8 +234,8 @@ class Student:
         self.name = name
 
 
-student = Student(123, 'Fedir')
-setattr(student, 'email', 'fedir@ukr.net' )
+student = Student(123, "Fedir")
+setattr(student, "email", "fedir@ukr.net")
 print(student.__dict__)
-setattr(student, 'student_email', 'stdent_1@ukr.net')
-print(getattr(student, 'student_email'))
+setattr(student, "student_email", "stdent_1@ukr.net")
+print(getattr(student, "student_email"))

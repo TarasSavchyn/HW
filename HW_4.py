@@ -8,17 +8,17 @@ class Vehicle:
         self.mileage = mileage
 
     def increase_speed(self):
-        print('increase_speed')
+        print("increase_speed")
 
     def break_speed(self):
-        print('break_speed')
+        print("break_speed")
 
     def mileage_info(self):
-        print(f'mileage {self.mileage} miles.')
+        print(f"mileage {self.mileage} miles.")
 
 
-'''2. Створіть дочірній клас Bus, який успадкує всі змінні та методи класу Vehicle і матиме 
-власний метод seating_capacity'''
+"""2. Створіть дочірній клас Bus, який успадкує всі змінні та методи класу Vehicle і матиме 
+власний метод seating_capacity"""
 
 
 class Bus(Vehicle):
@@ -27,20 +27,20 @@ class Bus(Vehicle):
         self.capacity = capacity
 
     def seating_capacity(self):
-        print(f'seating_capacity is {self.capacity} persons')
+        print(f"seating_capacity is {self.capacity} persons")
 
 
-'''3. Визначте, від якого класу успадковується клас Bus (перевірте issubclass)'''
+"""3. Визначте, від якого класу успадковується клас Bus (перевірте issubclass)"""
 print(issubclass(Bus, Vehicle))
 
-'''4. Створіть екземпляр Bus під назвою school_bus і визначте, чи є school_bus об'єктом класу Vehicle/Bus'''
+"""4. Створіть екземпляр Bus під назвою school_bus і визначте, чи є school_bus об'єктом класу Vehicle/Bus"""
 
 school_bus = Bus(100, 20000, 50)
 print(isinstance(school_bus, Bus))
 print(isinstance(school_bus, Vehicle))
 
-'''5. Створіть новий клас School з атрибутами екземпляра get_school_id і number_of_students та методами 
-school_address, main_subject'''
+"""5. Створіть новий клас School з атрибутами екземпляра get_school_id і number_of_students та методами 
+school_address, main_subject"""
 
 
 class School:
@@ -49,34 +49,42 @@ class School:
         self.number_of_students = number_of_students
 
     def school_address(self):
-        print('c. Colorado, Python street, 1000')
+        print("c. Colorado, Python street, 1000")
 
     def main_subject(self):
-        print('main_subject is Python')
+        print("main_subject is Python")
 
 
-'''6*. Створіть новий клас SchoolBus, який успадкує всі методи від School і Bus і матиме власний - bus_school_color'''
+"""6*. Створіть новий клас SchoolBus, який успадкує всі методи від School і Bus і матиме власний - bus_school_color"""
 
 
 class SchoolBus(School, Bus):
-    def __init__(self, max_speed, mileage, capacity, get_school_id, number_of_students, bus_school_color):
+    def __init__(
+        self,
+        max_speed,
+        mileage,
+        capacity,
+        get_school_id,
+        number_of_students,
+        bus_school_color,
+    ):
         super().__init__(get_school_id, number_of_students)
         Bus.__init__(self, max_speed, mileage, capacity)
         self.bus_school_color = bus_school_color
 
     def return_information(self):
         print(
-            f'max_speed {self.max_speed}, mileage {self.mileage}, capacity {self.capacity}, '
-            f'get_school_id {self.get_school_id}, number_of_students {self.number_of_students},'
-            f' bus_school_color {self.bus_school_color}'
+            f"max_speed {self.max_speed}, mileage {self.mileage}, capacity {self.capacity}, "
+            f"get_school_id {self.get_school_id}, number_of_students {self.number_of_students},"
+            f" bus_school_color {self.bus_school_color}"
         )
 
 
-school_bus_1 = SchoolBus('100 m/h', '20000 m', 100, '1.1.1.1', 10, 'Green')
+school_bus_1 = SchoolBus("100 m/h", "20000 m", 100, "1.1.1.1", 10, "Green")
 school_bus_1.return_information()
 
-'''7. Поліморфізм: Створіть два класи: Bear, Wolf. Обидва вони повинні мати метод eat. Створіть два екземпляри:
- від Ведмідь і від Вовк, створіть із нього кортеж і використовуючи спільну змінну, викличте метод eat.'''
+"""7. Поліморфізм: Створіть два класи: Bear, Wolf. Обидва вони повинні мати метод eat. Створіть два екземпляри:
+ від Ведмідь і від Вовк, створіть із нього кортеж і використовуючи спільну змінну, викличте метод eat."""
 
 
 class Bear:
@@ -85,7 +93,7 @@ class Bear:
         self.mass = mass
 
     def eat(self):
-        print('Bear eats')
+        print("Bear eats")
 
 
 class Wolf:
@@ -94,34 +102,34 @@ class Wolf:
         self.mass = mass
 
     def eat(self):
-        print('Wolf eats')
+        print("Wolf eats")
 
 
-vovchyk_bratyk = Wolf('Vovchyk_bratyk', '100 kg')
-balu = Bear('Balu', '100 kg')
+vovchyk_bratyk = Wolf("Vovchyk_bratyk", "100 kg")
+balu = Bear("Balu", "100 kg")
 
 for forest_animal in vovchyk_bratyk, balu:
     forest_animal.eat()
 
-'''Магічні методи:
+"""Магічні методи:
 Додатково: 8*. Створіть клас City з атрибутами екземпляра name i population, сторіть новий екземпляр цього класу, лише
 коли population > 1500, інакше повертається повідомлення: "Your city is too small". Підказка: використовуєте для цього 
-завдання магічні методи'''
+завдання магічні методи"""
 
 
 class City:
     def __new__(cls, *args, **kwargs):
         n, p = args
         if p > 1500:
-            print(f'The city {n} with a population {p} is created')
+            print(f"The city {n} with a population {p} is created")
             return super().__new__(cls)
         else:
-            print(f'Your city {n} is too small')
+            print(f"Your city {n} is too small")
 
     def __init__(self, name, population):
         self.name = name
         self.population = population
 
 
-kyiv = City('Kyiv', 2000)
-selo = City('Selo', 1000)
+kyiv = City("Kyiv", 2000)
+selo = City("Selo", 1000)

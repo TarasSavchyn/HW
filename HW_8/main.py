@@ -15,7 +15,7 @@ employees = [
 ]
 
 
-@timer('show_table')
+@timer("show_table")
 def show_table():
     for e in employees:
         e.show_line()
@@ -23,9 +23,9 @@ def show_table():
     e.show_line()
 
 
-def update_table(): # піднімаємо зарплату
+def update_table():  # піднімаємо зарплату
     for i in range(len(employees)):
-        employees[i].update_rate(employees[i].rate + Decimal(i+2))
+        employees[i].update_rate(employees[i].rate + Decimal(i + 2))
 
 
 if __name__ == "__main__":

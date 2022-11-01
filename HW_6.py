@@ -1,4 +1,4 @@
-'''1. Implement class iterator for Fibonacci numbers https://en.wikipedia.org/wiki/Fibonacci_number
+"""1. Implement class iterator for Fibonacci numbers https://en.wikipedia.org/wiki/Fibonacci_number
 Iterator get numbers of first Fibonacci numbers
 Example:
 
@@ -14,7 +14,8 @@ for i in FibonacciNumbers(10):
 13
 21
 34
-55'''
+55"""
+
 
 class FibonacciNumbers:
     a, b, count = 0, 1, 0
@@ -25,9 +26,9 @@ class FibonacciNumbers:
     def __iter__(self):
         return self
 
-    def __next__(self): # логіка утворення наступного значення послідовності
+    def __next__(self):  # логіка утворення наступного значення послідовності
         if self.count == 0:
-            self.count +=1
+            self.count += 1
             return 0
         if self.count < self.n:
             self.count += 1
@@ -41,33 +42,34 @@ for i in FibonacciNumbers(10):
     print(i)
 
 
+"""2.* Implement generator for Fibonacci numbers"""
 
 
-'''2.* Implement generator for Fibonacci numbers'''
-
-def fibonaci(n): # функція генератор чисел Фібоначі
+def fibonaci(n):  # функція генератор чисел Фібоначі
     a = 0
     b = 1
     for i in range(n):
         yield a
         a, b = b, a + b
 
-print([*fibonaci(10)]) # друк згенерованих чисел Фібоначі у вигляді списку заданої довжини
+
+print(
+    [*fibonaci(10)]
+)  # друк згенерованих чисел Фібоначі у вигляді списку заданої довжини
 
 
-
-
-'''3. Write generator expression that returns square numbers of integers from 0 to 10'''
+"""3. Write generator expression that returns square numbers of integers from 0 to 10"""
 
 generator_expression = (i**2 for i in range(11))
 
-print(generator_expression) # вивів генератор
-print(*generator_expression) # вивів значення
+print(generator_expression)  # вивів генератор
+print(*generator_expression)  # вивів значення
 
-'''4. Create an interface for the Laptop with the next methods: Screen, Keyboard, Touchpad, WebCam, Ports, Dynamics
-and create an HPLaptop class by using your interface.'''
+"""4. Create an interface for the Laptop with the next methods: Screen, Keyboard, Touchpad, WebCam, Ports, Dynamics
+and create an HPLaptop class by using your interface."""
 
 from abc import ABC, abstractmethod
+
 
 class Laptop(ABC):
     @abstractmethod
@@ -96,7 +98,6 @@ class Laptop(ABC):
 
 
 class HPLaptop(Laptop):
-
     def Screen(self):
         print("Screen")
 
@@ -115,19 +116,22 @@ class HPLaptop(Laptop):
     def Dynamics(self):
         print("Dynamics")
 
-HP_1 = HPLaptop() # we cannot create an instance without overriding all the necessary methods
+
+HP_1 = (
+    HPLaptop()
+)  # we cannot create an instance without overriding all the necessary methods
 # L = Laptop() we cannot instantiate an abstract class
 
 # note = Laptop() TypeError: Can't instantiate abstract class HPLaptop with abstract methods Dynamics, Keyboard, Ports, Screen, Touchpad, WebCam
 
-'''5. Create an abstract class for the Car with the next methods: drive, stop, open_door, close_door, turn_on_light,
+"""5. Create an abstract class for the Car with the next methods: drive, stop, open_door, close_door, turn_on_light,
 turn_off_light, enable_radio, disable_radio, where drive and stop will be predefined with some realization, all others
-should be abstract.'''
+should be abstract."""
 
-#from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
+
 
 class Car(ABC):
-
     def drive(self):
         print("car drive")
 
@@ -160,7 +164,6 @@ class Car(ABC):
 
 
 class Sedan(Car):
-
     def open_door(self):
         print("open_door")
 
@@ -180,6 +183,8 @@ class Sedan(Car):
         print("disable_radio")
 
 
-ford = Sedan() # перевірили чи можна створити екземпляр по шаблону без методів "drive and stop"
-ford.turn_off_light() # перевірили чи викликаються методи підкласу
-ford.stop() # перевірили чи викликаються методи базового класу
+ford = (
+    Sedan()
+)  # перевірили чи можна створити екземпляр по шаблону без методів "drive and stop"
+ford.turn_off_light()  # перевірили чи викликаються методи підкласу
+ford.stop()  # перевірили чи викликаються методи базового класу

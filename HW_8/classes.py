@@ -58,10 +58,8 @@ class Employee:
     @classmethod
     def show_header(cls):
         print(cls.ROW_LENGTH * "-")
-        print(cls.ROW_FORMAT.format('Name', 'Balance', 'Taxes Pay', 'Salary'))
+        print(cls.ROW_FORMAT.format("Name", "Balance", "Taxes Pay", "Salary"))
         print(cls.ROW_LENGTH * "-")
-
-
 
     @classmethod
     def show_line(cls):
