@@ -72,6 +72,9 @@ class SchoolBus(School, Bus):
         Bus.__init__(self, max_speed, mileage, capacity)
         self.bus_school_color = bus_school_color
 
+    def bus_school_color(self):
+        print(f" bus_school_color {self.bus_school_color}")
+
     def return_information(self):
         print(
             f"max_speed {self.max_speed}, mileage {self.mileage}, capacity {self.capacity}, "
@@ -107,8 +110,9 @@ class Wolf:
 
 vovchyk_bratyk = Wolf("Vovchyk_bratyk", "100 kg")
 balu = Bear("Balu", "100 kg")
+tup = (balu, vovchyk_bratyk)
 
-for forest_animal in vovchyk_bratyk, balu:
+for forest_animal in tup:
     forest_animal.eat()
 
 """Магічні методи:
