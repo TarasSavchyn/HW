@@ -1,9 +1,9 @@
 import logging
 
-from framework.models import Model
+from HW_10.app.framework.models import Model
 
 
-class Plant(Model):
+class Plant(Model): #ДОДАТИ ПЕРЕВІРКИ ПРИ ЛОГУВАННІ
     file = "plants.json"
 
     def __init__(self, name, location):
@@ -11,13 +11,13 @@ class Plant(Model):
         self.location = location
 
 
-class Employee(Model):
+class Employee(Model): #ДОДАТИ ПЕРЕВІРКИ ПРИ ЛОГУВАННІ
     file = "employees.json"
 
     def __init__(self, name, email, plant_id):
-        self.name = name
+        self.name = name  # імя повинно бути тільки латинськими буквами "Taras Savchyn"
         self.email = email
-        self.plant_id = plant_id
+        self.plant_id = plant_id  # повинен бути валідний ід наступний номер і тип int()
 
     def check_email(self):
         data = self.get_all()

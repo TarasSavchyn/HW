@@ -1,22 +1,51 @@
 import logging
 from models.models import Plant, Employee
+from os import stat, listdir, mkdir
 
 date_strftime_format = "%d-%b-%y %H:%M:%S"
 message_format = "%(asctime)s - %(levelname)s - %(message)s"
-logging.basicConfig(filename="logs/main.log", format= message_format, datefmt= date_strftime_format, encoding="UTF-8", level=logging.DEBUG)
+logging.basicConfig(
+    filename="logs/main.log",
+    format=message_format,
+    datefmt=date_strftime_format,
+    encoding="UTF-8",
+    level=logging.DEBUG,
+)
+
+
+if __name__ == "__main__":
+
+    if "database" not in listdir():
+        mkdir("database")
+
+    if (
+        "plants.json" not in listdir("database")
+        or stat("database/plants.json").st_size == 0
+    ):
+        with open("database/plants.json", "w") as p:
+            p.write("[]")
+
+    if (
+        "employees.json" not in listdir("database")
+        or stat("database/employees.json").st_size == 0
+    ):
+        with open("database/employees.json", "w") as e:
+            e.write("[]")
 
 
 while True:
-    print("1. Add new plant \n"
-          "2. Get all plants\n"
-          "3. Get plant by id\n"
-          "4. Delete plant by id\n"
-          "5. Add new employee\n"
-          "6. Get all employee\n"
-          "7. Get employee by id\n"
-          "8. Delete employee by id\n"
-          )
+    print(
+        "1. Add new plant \n"
+        "2. Get all plants\n"
+        "3. Get plant by id\n"
+        "4. Delete plant by id\n"
+        "5. Add new employee\n"
+        "6. Get all employee\n"
+        "7. Get employee by id\n"
+        "8. Delete employee by id\n"
+    )
     logging.info("Menu printed!!!")
+
     try:
         flag = int(input("Choose: "))
     except ValueError as e:
@@ -37,7 +66,7 @@ while True:
             print(plant["location"])
     elif flag == 3:
         try:
-            id = int(input('Type id of plant: '))
+            id = int(input("Type id of plant: "))
         except ValueError as e:
             logging.error(e)
             continue
@@ -46,7 +75,7 @@ while True:
         print(plant["name"])
         print(plant["location"])
     elif flag == 4:
-        id = int(input('Type id of plant which you want to delete: '))
+        id = int(input("Type id of plant which you want to delete: "))
         Plant.delete(id)
     elif flag == 5:
         name = input("Type name of employee: ")
@@ -67,7 +96,7 @@ while True:
             print(employee["email"])
     elif flag == 7:
         try:
-            id = int(input('Type id of employee: '))
+            id = int(input("Type id of employee: "))
         except ValueError:
             logging.error("Id of employee not a number")
             continue
@@ -76,11 +105,8 @@ while True:
         print(employee["name"])
         print(employee["email"])
     elif flag == 8:
-        id = int(input('Type id of employee: '))
+        id = int(input("Type id of employee: "))
         Employee.delete(id)
-
-
-
 
 
 # file = open("test.txt", "a")

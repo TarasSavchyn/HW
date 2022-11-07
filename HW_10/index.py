@@ -4,6 +4,7 @@
 # KeyError
 # NameError
 import logging
+
 logging.basicConfig(filename="logs.log", encoding="UTF-8", level=logging.DEBUG)
 
 logging.info("Program start working!")
