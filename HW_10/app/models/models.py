@@ -33,6 +33,9 @@ class Employee(Model): #ДОДАТИ ПЕРЕВІРКИ ПРИ ЛОГУВАНН�
         if position > position_of_dot:
             raise ValueError("Not a valid email address!")
 
+
+
+
     def save(self):
         plant = Plant.get_by_id(self.plant_id)
         try:

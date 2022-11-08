@@ -1,9 +1,10 @@
 import logging
 from models.models import Plant, Employee
-from os import stat, listdir, mkdir
+from HW_10.app.directory_config import directory_config
 
 date_strftime_format = "%d-%b-%y %H:%M:%S"
 message_format = "%(asctime)s - %(levelname)s - %(message)s"
+
 logging.basicConfig(
     filename="logs/main.log",
     format=message_format,
@@ -13,24 +14,9 @@ logging.basicConfig(
 )
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":            # проводимо налаштування папки для роботи
+    directory_config()
 
-    if "database" not in listdir():
-        mkdir("database")
-
-    if (
-        "plants.json" not in listdir("database")
-        or stat("database/plants.json").st_size == 0
-    ):
-        with open("database/plants.json", "w") as p:
-            p.write("[]")
-
-    if (
-        "employees.json" not in listdir("database")
-        or stat("database/employees.json").st_size == 0
-    ):
-        with open("database/employees.json", "w") as e:
-            e.write("[]")
 
 
 while True:
@@ -76,7 +62,16 @@ while True:
         print(plant["location"])
     elif flag == 4:
         id = int(input("Type id of plant which you want to delete: "))
-        Plant.delete(id)
+
+        try:
+            Plant.delete(id)
+            logging.info(f'the Plant with id: {id} has been removed')
+        except ValueError:
+            logging.error('Non-existent id entered')
+
+
+
+
     elif flag == 5:
         name = input("Type name of employee: ")
         email = input("Type email of employee: ")
@@ -105,8 +100,16 @@ while True:
         print(employee["name"])
         print(employee["email"])
     elif flag == 8:
-        id = int(input("Type id of employee: "))
-        Employee.delete(id)
+        try:
+            id = int(input("Type id of employee: "))
+        except ValueError:
+            logging.error("Id of employee not a number")
+
+        try:
+            Employee.delete(id)
+            logging.info(f'the employee with id: {id} has been removed')
+        except ValueError:
+            logging.error('Non-existent id entered')
 
 
 # file = open("test.txt", "a")

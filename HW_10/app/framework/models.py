@@ -79,9 +79,18 @@ class Model(ABC):
     def delete(cls, id):
         instances = cls.get_data(
             "database/" + cls.file
-        )  # видаляти можна тільки існуючі дані
+        )
+
+
         for i in range(len(instances)):
+            if id not in [instances[i]["id"]  for i in range(len(instances))]:
+                print('Non-existent id entered')
+                raise ValueError('Non-existent id entered')
+
             if instances[i]["id"] == id:
                 del instances[i]
                 break
+
+
+
         cls.save_data_to_file(instances, "database/" + cls.file)
