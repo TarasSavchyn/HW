@@ -60,15 +60,13 @@ class Model(ABC):
             file.close()
             logging.info("File created")
 
-    @classmethod  # видати дані можна тільки з існуючоі директорії
+    @classmethod
     def get_all(cls):
         instances = cls.get_data("database/" + cls.file)
         return instances
 
     @classmethod
-    def get_by_id(
-        cls, id
-    ):
+    def get_by_id(cls, id):
 
         instances = cls.get_data("database/" + cls.file)
         for instance in instances:
@@ -77,20 +75,15 @@ class Model(ABC):
 
     @classmethod
     def delete(cls, id):
-        instances = cls.get_data(
-            "database/" + cls.file
-        )
-
+        instances = cls.get_data("database/" + cls.file)
 
         for i in range(len(instances)):
-            if id not in [instances[i]["id"]  for i in range(len(instances))]:
-                print('Non-existent id entered')
-                raise ValueError('Non-existent id entered')
+            if id not in [instances[i]["id"] for i in range(len(instances))]:
+                print("Non-existent id entered")
+                raise ValueError("Non-existent id entered")
 
             if instances[i]["id"] == id:
                 del instances[i]
                 break
-
-
 
         cls.save_data_to_file(instances, "database/" + cls.file)

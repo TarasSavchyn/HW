@@ -14,9 +14,8 @@ logging.basicConfig(
 )
 
 
-if __name__ == "__main__":            # проводимо налаштування папки для роботи
+if __name__ == "__main__":  # проводимо налаштування папки для роботи
     directory_config()
-
 
 
 while True:
@@ -54,28 +53,38 @@ while True:
         try:
             id = int(input("Type id of plant: "))
         except ValueError as e:
+            print('"id" must be a number')
             logging.error(e)
             continue
-        plant = Plant.get_by_id(id)
-        print(plant["id"])
-        print(plant["name"])
-        print(plant["location"])
+        try:
+            plant = Plant.get_by_id(id)
+            print(plant["id"])
+            print(plant["name"])
+            print(plant["location"])
+        except TypeError:
+            print("Non-existent id entered")
+            logging.error("Non-existent id entered")
+
     elif flag == 4:
-        id = int(input("Type id of plant which you want to delete: "))
+        try:
+            id = int(input("Type id of plant which you want to delete: "))
+        except (ValueError, TypeError):
+            logging.error("Non-existent id entered")
 
         try:
             Plant.delete(id)
-            logging.info(f'the Plant with id: {id} has been removed')
+            logging.info(f"the Plant with id: {id} has been removed")
         except ValueError:
-            logging.error('Non-existent id entered')
-
-
-
+            logging.error("Non-existent id entered")
 
     elif flag == 5:
         name = input("Type name of employee: ")
         email = input("Type email of employee: ")
-        plant_id = int(input("Type id of plant: "))
+        try:
+            plant_id = int(input("Type id of plant: "))
+        except ValueError:
+            logging.error("plant_id must be a number")
+
         employee = Employee(name, email, plant_id)
         try:
             employee.save()
@@ -92,13 +101,17 @@ while True:
     elif flag == 7:
         try:
             id = int(input("Type id of employee: "))
-        except ValueError:
+        except (ValueError, TypeError):
+            print('"id" must be a number')
             logging.error("Id of employee not a number")
             continue
         employee = Employee.get_by_id(id)
-        print(employee["id"])
-        print(employee["name"])
-        print(employee["email"])
+        try:
+            print(employee["id"])
+            print(employee["name"])
+            print(employee["email"])
+        except TypeError:
+            print("Non-existent id entered")
     elif flag == 8:
         try:
             id = int(input("Type id of employee: "))
@@ -107,9 +120,9 @@ while True:
 
         try:
             Employee.delete(id)
-            logging.info(f'the employee with id: {id} has been removed')
+            logging.info(f"the employee with id: {id} has been removed")
         except ValueError:
-            logging.error('Non-existent id entered')
+            logging.error("Non-existent id entered")
 
 
 # file = open("test.txt", "a")
