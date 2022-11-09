@@ -32,6 +32,7 @@ class Employee(Model):
 
     def employee_validator(self):  # додали мінімальний валідатор employee
         if len(self.name.split()) != 2:
+            print("name must have two or more words")
             raise ValueError("Not valid name")
         data = self.get_all()
         for el in data:
