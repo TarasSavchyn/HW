@@ -33,9 +33,12 @@ while True:
 
     try:
         flag = int(input("Choose: "))
+        if flag not in range(1, 9):
+            raise ValueError
+
     except ValueError as e:
         logging.error(e)
-        print("You must to type a number!!!")
+        print("You must to type a number in range 1-8 !!!")
         continue
 
     if flag == 1:
@@ -43,6 +46,7 @@ while True:
         location = input("Type location of plant: ")
         plant = Plant(name, location)
         plant.save()
+        logging.info(f'new plant "{name}" is added')
     elif flag == 2:
         plants = Plant.get_all()
         for plant in plants:
@@ -85,9 +89,13 @@ while True:
         except ValueError:
             logging.error("plant_id must be a number")
 
-        employee = Employee(name, email, plant_id)
+        try:
+            employee = Employee(name, email, plant_id)
+        except NameError:
+            print("data entry error")
         try:
             employee.save()
+            logging.info(f"new employee {name} is added")
         except ValueError as e:
             logging.error(e)
             print("You need to write a plant_id of existing plant!")
@@ -123,8 +131,3 @@ while True:
             logging.info(f"the employee with id: {id} has been removed")
         except ValueError:
             logging.error("Non-existent id entered")
-
-
-# file = open("test.txt", "a")
-# file.write("a")
-# file.close()
