@@ -56,11 +56,11 @@ class Calc:
     Створіть клас з одним методом "add_nums" та 3 атрибутами, який повертає суму цих атрибутів.
     """
 
-    a, b, c = 1, 2, 3
+    a, b, c = 1, 5, 3
 
     @classmethod
-    def add_nums(self):
-        return sum((self.a, self.b, self.c))
+    def add_nums(cls):
+        return sum((cls.a, cls.b, cls.c))
 
 
 c = Calc()
@@ -189,8 +189,8 @@ class AddressBook:
         self.birthday = birthday
         self.age = age
 
-    def str(self):
-        print(
+    def __str__(self):
+        return (
             f"key='{self.key}', name='{self.name}', phone_number='{self.phone_number}', address='{self.address}',"
             f" email='{self.email}', birthday= '{self.birthday}', age='{self.age}'"
         )
@@ -199,7 +199,7 @@ class AddressBook:
 fedir_hynnynets = AddressBook(
     1234, "Fedir", "3372832", "Fedir street, 1", "fedir@ukr.net", "01.01.1900", 122
 )
-fedir_hynnynets.str()
+print(fedir_hynnynets)
 
 
 # 9.
