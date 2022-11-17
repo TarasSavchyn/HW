@@ -20,6 +20,3 @@ class Signer:
     def itsdangerous_decode(self, encoded):
         data = URLSafeSerializer(self.secret, salt=self._salt)
         return data.loads(encoded)
-a = Signer('', "")
-s = a.jwt_encode({})
-
