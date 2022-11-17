@@ -24,7 +24,20 @@ class test_singer(unittest.TestCase):
         d_val = s.jwt_decode(e_val)
         self.assertNotEqual(e_val, d_val)
 
-    def test_4(
+    def test_4(self): #перевіряємо чи тест повертає строку
+        data = {'name':'taras'}
+        self.assertEqual(type(s.jwt_encode(data)), str)
+
+
+    def test_6(self): # перевіряємо чи повертаються хоча б якісь дані
+        data = {'name': 'taras'}
+        e_val = s.jwt_encode(data)
+        d_val = s.jwt_decode(e_val)
+        self.assertNotEqual(e_val, None)
+        self.assertNotEqual(d_val, None)
+
+
+    def test_5(
         self,
     ):  # перевіряємо чи дійсно отримуємо TypeError при неправильній подачі даних
         self.assertRaises(TypeError, Signer(1, 2))
