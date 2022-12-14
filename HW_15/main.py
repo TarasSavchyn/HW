@@ -9,11 +9,14 @@ def args_parser() -> None:
     parser.add_argument("file_name", help="input file_name", type=str)
     args = parser.parse_args()
 
-    with open(args.file_name) as file:
-        if args.f:
-            print(len(file.readline().split()))
-        else:
-            print(len(file.read().split()))
+    try:
+        with open(args.file_name) as file:
+            if args.f:
+                print(len(file.readline().split()))
+            else:
+                print(len(file.read().split()))
+    except FileNotFoundError:
+        print("file not found, enter right file_name")
 
 
 if __name__ == "__main__":
