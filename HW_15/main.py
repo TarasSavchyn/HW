@@ -16,4 +16,5 @@ def args_parser() -> None:
             print(len(file.read().split()))
 
 
-args_parser()
+if __name__ == "__main__":
+    args_parser()
